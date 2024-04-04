@@ -10,7 +10,7 @@ const diceEl = document.querySelector('.dice');
 // Starting Conditions
 score0El.textContent = 0;
 score1El.textContent = 0;
-diceEl.classList.add('hidden');
+// diceEl.classList.add('hidden');
 
 //
 musicIconEl.onclick = () => {
