@@ -24,6 +24,7 @@ diceEl.classList.add('hidden');
 const scores = [0, 0];
 let currentScore = 0;
 let activePlayer = 0;
+let playing = true;
 
 const switchPlayer = () => {
   document.getElementById(`current--${activePlayer}`).textContent = 0;
@@ -48,41 +49,45 @@ musicIconEl.onclick = () => {
 
 // Rolling Dice Functionality
 btnRoll.addEventListener('click', () => {
-  // 1. Generating a Random Dice Roll
-  const dice = Math.trunc(Math.random() * 6) + 1;
+  if (playing) {
+    // 1. Generating a Random Dice Roll
+    const dice = Math.trunc(Math.random() * 6) + 1;
 
-  // 2. Display Dice
-  diceEl.classList.remove('hidden');
-  diceEl.src = `./assets/img/bx-dice-${dice}.svg`;
+    // 2. Display Dice
+    diceEl.classList.remove('hidden');
+    diceEl.src = `./assets/img/bx-dice-${dice}.svg`;
 
-  // 3. Check For Rolled 1:
-  if (dice !== 1) {
-    // Add Dice To Current Score
-    currentScore += dice;
-    document.getElementById(`current--${activePlayer}`).textContent =
-      currentScore;
-  } else {
-    // Switch to Next Player
-    switchPlayer();
+    // 3. Check For Rolled 1:
+    if (dice !== 1) {
+      // Add Dice To Current Score
+      currentScore += dice;
+      document.getElementById(`current--${activePlayer}`).textContent =
+        currentScore;
+    } else {
+      // Switch to Next Player
+      switchPlayer();
+    }
   }
 });
 
 // Hold Btn
 btnHold.addEventListener('click', () => {
-  const currentPlayer = document.querySelector(`.player--${activePlayer}`);
-  const activePlayerScore = document.getElementById(`score--${activePlayer}`);
+  if (playing) {
+    const currentPlayer = document.querySelector(`.player--${activePlayer}`);
+    const activePlayerScore = document.getElementById(`score--${activePlayer}`);
 
-  // 1. Add Current Score to Active Player's Score
-  scores[activePlayer] += currentScore;
-  activePlayerScore.textContent = scores[activePlayer];
+    // 1. Add Current Score to Active Player's Score
+    scores[activePlayer] += currentScore;
+    activePlayerScore.textContent = scores[activePlayer];
 
-  // 2. Check If Player's Score is >= 100
-  if (scores[activePlayer] >= 10) {
-    // Finish the Game
-    currentPlayer.classList.add('player--winner');
-    currentPlayer.classList.remove('player--active');
-  } else {
-    // Switch to the Next Player
-    switchPlayer();
+    // 2. Check If Player's Score is >= 100
+    if (scores[activePlayer] >= 10) {
+      // Finish the Game
+      currentPlayer.classList.add('player--winner');
+      currentPlayer.classList.remove('player--active');
+    } else {
+      // Switch to the Next Player
+      switchPlayer();
+    }
   }
 });
