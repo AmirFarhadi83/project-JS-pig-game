@@ -77,7 +77,7 @@ btnHold.addEventListener('click', () => {
   activePlayerScore.textContent = scores[activePlayer];
 
   // 2. Check If Player's Score is >= 100
-  if (scores[activePlayer] >= 100) {
+  if (scores[activePlayer] >= 10) {
     // Finish the Game
     currentPlayer.classList.add('player--winner');
     currentPlayer.classList.remove('player--active');
