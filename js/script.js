@@ -70,12 +70,12 @@ btnRoll.addEventListener('click', () => {
 // Hold Btn
 btnHold.addEventListener('click', () => {
   const currentPlayer = document.querySelector(`.player--${activePlayer}`);
-    const activePlayerScore = document.getElementById(`score--${activePlayer}`);
-    
+  const activePlayerScore = document.getElementById(`score--${activePlayer}`);
+
   // 1. Add Current Score to Active Player's Score
   scores[activePlayer] += currentScore;
-    activePlayerScore.textContent = scores[activePlayer];
-    
+  activePlayerScore.textContent = scores[activePlayer];
+
   // 2. Check If Player's Score is >= 100
   if (scores[activePlayer] >= 100) {
     // Finish the Game
