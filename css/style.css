@@ -189,7 +189,19 @@ main {
 
 .player--winner .name {
   font-weight: 700;
-  color: #c7365f;
+  color: gold;
+}
+
+.player--winner .score {
+  color: gold !important;
+}
+
+.player--winner .current-label {
+  opacity: 1 !important;
+}
+
+.player--winner .current-score {
+  opacity: 1 !important;
 }
 
 .hidden {
